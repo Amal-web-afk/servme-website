@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FBF5F4; /* Premium frothed warm-white rose cream */
+  --foreground: #3C2C28; /* Deep warm brown wood text */
+  --card: #FFFFFF;
+  --card-foreground: #3C2C28;
+  --popover: #FFFFFF;
+  --popover-foreground: #3C2C28;
+  --primary: #E5613D; /* Terracotta Main */
+  --primary-foreground: #FFFFFF;
+  --secondary: #8E7C77; /* Warm delicate rose-grey accent */
+  --secondary-foreground: #FBF5F4;
+  --muted: #F3ECEB; /* Warm delicate rose-grey divider/background */
+  --muted-foreground: #8E7C77;
+  --accent: #E5613D;
+  --accent-foreground: #FFFFFF;
+  --destructive: #EF4444;
+  --border: #EBE3E2; /* Warm delicate border */
+  --input: #EBE3E2;
+  --ring: #E5613D;
+  --radius: 1.25rem;
+}
+
+.dark {
+  --background: #0F1216; /* Charcoal dark */
+  --foreground: #F8FAFC;
+  --card: #161A22;
+  --card-foreground: #F8FAFC;
+  --popover: #161A22;
+  --popover-foreground: #F8FAFC;
+  --primary: #FF7A00;
+  --primary-foreground: #FFFFFF;
+  --secondary: #334155;
+  --secondary-foreground: #F8FAFC;
+  --muted: #1E242E;
+  --muted-foreground: #9CA3AF;
+  --accent: #FF7A00;
+  --accent-foreground: #FFFFFF;
+  --destructive: #EF4444;
+  --border: #2D3748;
+  --input: #2D3748;
+  --ring: #FF7A00;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Custom Micro-animations for high-fidelity interactive feedback */
+.active-category-indicator {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+.dark .hover-lift:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+}
+
+/* Hide scrollbar for Category Tabs */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom loading skeleton animation */
+@keyframes pulse-warm {
+  0%, 100% {
+    opacity: 1;
+    background-color: var(--muted);
+  }
+  50% {
+    opacity: .5;
+    background-color: rgba(226, 88, 34, 0.08);
+  }
+}
+
+.animate-pulse-warm {
+  animation: pulse-warm 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Slow organic drift animations for background ambient lights */
+@keyframes float-slow-1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(40px, -60px) scale(1.15);
+  }
+  66% {
+    transform: translate(-30px, 40px) scale(0.9);
+  }
+}
+
+@keyframes float-slow-2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1.1);
+  }
+  50% {
+    transform: translate(-50px, 50px) scale(0.85);
+  }
+}
+
+@keyframes float-slow-3 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(0.9);
+  }
+  50% {
+    transform: translate(50px, -30px) scale(1.05);
+  }
+}
+
+.animate-float-1 {
+  animation: float-slow-1 22s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: float-slow-2 26s ease-in-out infinite;
+}
+
+.animate-float-3 {
+  animation: float-slow-3 20s ease-in-out infinite;
+}
+
+/* Ultra-Premium Glass card active states */
+.premium-card-active {
+  box-shadow: 
+    0 0 0 1px rgba(229, 97, 61, 0.15),
+    0 16px 36px -12px rgba(229, 97, 61, 0.08),
+    inset 0 0 12px rgba(229, 97, 61, 0.03);
+}
+
+.dark .premium-card-active {
+  box-shadow: 
+    0 0 0 1px rgba(255, 122, 0, 0.2),
+    0 16px 36px -12px rgba(255, 122, 0, 0.08),
+    inset 0 0 12px rgba(255, 122, 0, 0.03);
+}
+
+@keyframes bell-shake {
+  0%, 100% { transform: rotate(0); }
+  15% { transform: rotate(18deg); }
+  30% { transform: rotate(-14deg); }
+  45% { transform: rotate(12deg); }
+  60% { transform: rotate(-10deg); }
+  75% { transform: rotate(5deg); }
+  90% { transform: rotate(-2deg); }
+}
+
+.animate-bell-shake {
+  display: inline-block;
+  animation: bell-shake 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+  transform-origin: top center;
+}
+
+/* Custom duration utilities */
+.duration-400 {
+  transition-duration: 400ms;
+}
+
+/* Food card enter animation */
+@keyframes card-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-card-rise {
+  animation: card-rise 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Shimmer sweep animation for Call Waiter button */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  60%, 100% { transform: translateX(200%); }
+}
