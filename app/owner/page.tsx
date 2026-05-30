@@ -484,6 +484,7 @@ export default function OwnerPortal() {
                   <div className="flex flex-col gap-4">
                     {staffList.map((staff) => {
                       const payload = {
+                        type: "wavepos_onboard",
                         email: staff.email,
                         restaurantId: staff.restaurantId,
                         role: staff.role
