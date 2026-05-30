@@ -703,7 +703,8 @@ export default function OwnerPortal() {
                             <QRCodeRenderer 
                               value={qr.url} 
                               size={200} 
-                              level="H"
+                              level="M"
+                              includeMargin={true}
                               className="print:w-full print:h-auto" 
                             />
                           </div>
